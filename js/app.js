@@ -1,6 +1,32 @@
 /*
  * Create a list that holds all of your cards
  */
+const reset = document.querySelector('.restart');
+reset.addEventListener('click', function(evt) {
+    cardShuffle();
+    //removeDeck()
+});
+
+function cardShuffle() {
+    let cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle']
+    shuffle(cards);
+    console.log(cards);
+    const deck = document.querySelector('.deck');
+    deck.remove();
+    const container = document.querySelector('.container');
+    const regenerate = document.createElement('ul');
+    regenerate.className = 'deck';
+    container.appendChild(regenerate);
+    for (let i = 0; i < cards.length; i++) {
+        let list = document.createElement('li')
+        let ist = document.createElement('i')
+        list.className = 'card';
+        ist.className = 'fa';
+        ist.classList.add(cards[i]);
+        regenerate.appendChild(list);
+        list.appendChild(ist);
+    }
+}
 
 
 /*
@@ -11,8 +37,10 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -24,6 +52,8 @@ function shuffle(array) {
 
     return array;
 }
+
+
 
 
 /*
