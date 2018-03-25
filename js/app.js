@@ -2,40 +2,35 @@
  * Create a list that holds all of your cards
  */
 window.onload = function() {
-    beginner();
-    //let listArray = [];
+    cardShuffle();
+    begin();
 }
 
 let cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
-let deck = document.querySelector('.deck');
-let container = document.querySelector('.container');
-let regenerate = document.createElement('ul');
 let count = 0;
 let counter = document.querySelector('.counter');
 let starElement = document.querySelectorAll('.fa-star');
 let moves = document.querySelector('.moves');
-let clickedCard = document.querySelectorAll('.card');
-let deneme = [...clickedCard];
-console.log(deneme[1]);
-console.log(clickedCard[1]);
 let listArray = [];
-    
+
 
 function cardShuffle() {
-    shuffle(cards);
+    let shuffled = shuffle(cards);
     console.log(cards);
-    
+    const deck = document.querySelector('.deck');
+    const container = document.querySelector('.container');
     deck.remove();
-    
-    
+    const regenerate = document.createElement('ul');
     regenerate.className = 'deck';
     container.appendChild(regenerate);
-    for (let i = 0; i < cards.length; i++) {
-        let list = document.createElement('li')
-        let ist = document.createElement('i')
+    for (let i = 0; i < shuffled.length; i++) {
+
+        console.log(shuffled[i]);
+        let list = document.createElement('li');
+        let ist = document.createElement('i');
         list.className = 'card';
         ist.className = 'fa';
-        ist.classList.add(cards[i]);
+        ist.classList.add(shuffled[i]);
         regenerate.appendChild(list);
         list.appendChild(ist);
     }
@@ -63,16 +58,12 @@ function shuffle(array) {
     return array;
 }
 
-
-
 function clickCounter() {
     count += 1;
-    
     console.log(counter);
     counter.innerHTML = 'Counter: ' + count;
     console.log(count);
 }
-
 
 
 function badge() {
@@ -95,56 +86,47 @@ function badge() {
     }
 }
 
-function begin(deneme) {
 
-    
-   // console.log(deneme);
-    //for (let i = 0; i < clickedCard.length; i++) {
-      //  console.log(deneme);
-        //deneme.addEventListener('click', function(e) {
-        //	 e.target.removeEventListener('click',arguments.callee);
-             
-        	//e.stopPropagation();
-        	//deneme.dispatchEvent(event);
-            //e.preventDefault();
-           // console.log("tık");
-            //console.log(deneme);
-            displayCard(deneme);
-            collectMatchedCards(deneme);
+
+function begin() {
+    let clickedCard = document.querySelectorAll('.card');
+
+    for (let i = 0; i < clickedCard.length; i++) {
+        clickedCard[i].addEventListener('click', function(e) {
+            console.log(clickedCard[i]);
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            isAnimating = false;
+            displayCard(clickedCard[i]);
+            collectMatchedCards(clickedCard[i]);
             clickCounter();
             badge();
-            
-            //console.log(e.target);
+
+            console.log(listArray.length);
             if (listArray.length % 2 === 0) {
                 console.log("true");
+
                 if (listArray[(listArray.length - 1)] === listArray[(listArray.length - 2)]) {
                     console.log("true");
-                    //console.log(e.target);
-                    console.log(listArray[(listArray.length - 1)])
-                    //console.log(clickedCard[i]);
-                    //console.log(clickedCard[i - 1]);
-                    locked(listArray[(listArray.length - 1)]);
+                    console.log(listArray[(listArray.length - 1)]);
+                    setTimeout(function() { locked(listArray[(listArray.length - 1)]); }, 1000);
 
                 } else {
-                    //e.target.addEventListener('click',arguments.callee);
+                    setTimeout(function() { hide(listArray[(listArray.length - 1)]); }, 1000);
+                    setTimeout(function() { hide(listArray[(listArray.length - 1)]); }, 1000);
 
-                    setTimeout(function() { hide(listArray[(listArray.length - 1)]); }, 750);
-                    setTimeout(function() { hide(listArray[(listArray.length - 1)]); }, 750);
 
                 }
             }
             if (listArray.length === 16) {
-                setTimeout(winner, 1000);
+                setTimeout(winner, 1500);
             }
-        }
-    
-
+        });
+    }
+}
 
 function displayCard(open) {
     open.className = 'card open show';
-    //let deneme = open.activeElement;
-    //e.target.removeEventListener('click',arguments.callee);
-    //console.log(deneme);
 }
 
 
@@ -153,10 +135,10 @@ function collectMatchedCards(list) {
     console.log(cardName);
     listArray.push(cardName);
     console.log(listArray);
-    //return cardName;
 }
 
 function locked(equal) {
+
     let matchedCards = document.querySelectorAll('[class=' + CSS.escape(equal) + ']');
     console.log(matchedCards.nodeName);
     console.log(matchedCards);
@@ -172,10 +154,10 @@ function hide(notEqual) {
     console.log(unMatchedCards);
     for (let i = 0; i < unMatchedCards.length; i++) {
         unMatchedCards[i].parentElement.className = 'card';
-
         console.log(unMatchedCards);
     }
     listArray.pop();
+
     console.log(listArray);
 }
 
@@ -183,10 +165,7 @@ function winner() {
     alert('Congratulations ! Deck is cleared sucessfully ! ' + moves.textContent);
 }
 
-function emptyArray() {
-    let listArray = [];
-    console.log(listArray);
-}
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -208,20 +187,6 @@ reset.addEventListener('click', function(evt) {
     }
     clickCounter();
     cardShuffle();
-    beginner();
+    begin();
     console.log(listArray);
-});	
-
-function beginner () {
-for (let i = 0; i < clickedCard.length; i++) {
-    console.log(clickedCard.length);
-        console.log(clickedCard[i]);
-        deneme = clickedCard[i];
-        console.log(deneme);
-        //deneme.addEventListener('click', begin);
-        deneme.addEventListener('click',function(e){
-            begin(e.target);
-            console.log(e.target);
-        });
-    }
-}
+});
