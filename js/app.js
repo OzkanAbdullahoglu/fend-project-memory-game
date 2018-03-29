@@ -12,7 +12,7 @@ let deck = document.querySelector('.deck');
 let deckCards = deck.children;
 let bagdeCount = 0;
 
-for (i = 0; i < deckCards.length; i++) {};
+
 let timeCounter = document.querySelector('.timer');
 let second = 0;
 let minute = 0;
@@ -100,7 +100,7 @@ function begin() {
                 }
             }
             if (listArray.length === 6) {
-                $('#exampleModalCenter').modal('show');
+                setTimeout(function() { $('#modalCenter').modal('show');}, 1000);
                 let modalSelector = document.querySelector('.modal-body');
                 let outputOne = document.createElement('p');
                 let outputTwo = document.createElement('p');
@@ -111,7 +111,7 @@ function begin() {
                 if (hour > 0) {
                     outputTwo.innerHTML = 'You cleared the deck in ' + hour + ' hour(s) ' + minute + ' mins ' + second + ' secs';
                 } else {
-                    outputTwo.innerHTML = 'You cleared the deck in ' + minute + ' mins ' + second + ' secs';
+                    outputTwo.innerHTML = 'You cleared the deck in ' + minute + ' min(s) ' + second + ' secs';
                 }
             }
         });
@@ -172,7 +172,11 @@ function resetTime() {
 function timer() {
 
     timerr = setInterval(function() {
-        timeCounter.innerHTML = hour + ' hrs ' + minute + ' mins ' + second + ' secs';
+        if(hour>0){
+             timeCounter.innerHTML = 'Timer: '+hour + ' hrs ' + minute + ' mins ' + second + ' secs';
+         } else {
+        timeCounter.innerHTML = 'Timer: '+ minute + ' min(s) ' + second + ' secs';
+        }
         second++;
         if (second == 60) {
             minute++;
