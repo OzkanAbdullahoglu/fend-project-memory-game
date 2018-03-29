@@ -76,12 +76,7 @@ let clickedCard = document.querySelectorAll('.card');
 function begin() {
 
     for (let i = 0; i < clickedCard.length; i++) {
-        clickedCard[i].addEventListener('mouseover', function(e) {
-            clickedCard[i].style.cssText = 'background: #e1cce1'
-        });
-        clickedCard[i].addEventListener('mouseout', function(e) {
-            clickedCard[i].style.cssText = 'background: #2e3d49'
-        });
+        
         clickedCard[i].addEventListener('click', function(e) {
             collectMatchedCards(clickedCard[i]);
             displayCard(clickedCard[i]);

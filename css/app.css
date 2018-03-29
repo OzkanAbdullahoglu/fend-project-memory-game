@@ -17,8 +17,9 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-   font-family: 'Coda', cursive;
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
 }
 
 .container {
@@ -27,6 +28,7 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
 
 
 
@@ -58,7 +60,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     display: flex;
-    
+
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
@@ -72,8 +74,8 @@ body {
     animation: flipY 700ms;
     animation-timing-function: ease-in;
     pointer-events: none;
-
 }
+
 
 /*.deck .card.show {
     font-size: 33px;
@@ -87,13 +89,12 @@ body {
     background: #02ccba !important;
     font-size: 33px;
     pointer-events: none;
-    
-
 }
 
 .deck .card.disabled {
     pointer-events: none;
 }
+
 
 /*
  * Styles for the Score Panel
@@ -122,9 +123,12 @@ body {
     cursor: pointer;
 }
 
-.fa-star, .fa-star-o, .fa-star-half-o {
+.fa-star,
+.fa-star-o,
+.fa-star-half-o {
     color: #00abff;
 }
+
 @-webkit-keyframes flipY {
     0% {
         -webkit-transform: rotateY(0deg);
@@ -138,7 +142,7 @@ body {
     75% {
         -webkit-transform: rotateY(270deg);
     }
-    
+
     100% {
         -webkit-transform: rotateY(360deg);
     }
@@ -163,7 +167,7 @@ body {
 }
 
 @media screen and (max-width: 601px) {
-    
+
     .deck {
         width: 360px;
         min-height: 380px;
@@ -174,16 +178,26 @@ body {
         width: 75px;
         margin: 0;
     }
-    .score-panel, .timer {
+    .score-panel,
+    .timer {
         font-size: 1.5em;
     }
-        
-    
-       
-}  
+}
 
+@media only screen and (max-width: 768px) and (min-width: 600px) {
 
-
-    
-
-
+    .deck {
+        width: 460px;
+        min-height: 480px;
+        padding: 16px;
+    }
+    .deck .card {
+        height: 100px;
+        width: 100px;
+        margin: 0;
+    }
+    .score-panel,
+    .timer {
+        font-size: 1.5em;
+    }
+}
