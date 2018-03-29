@@ -42,6 +42,7 @@ h1 {
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
+    /*margin: 25px;*/
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -67,7 +68,7 @@ h1 {
 
 .deck .card.open.show {
     transform: rotateY(0);
-    background: #02b3e4;
+    background: #02b3e4 !important;
     cursor: default;
     font-size: 33px;
     animation: flipY 700ms;
@@ -85,12 +86,10 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #02ccba !important;
     font-size: 33px;
     pointer-events: none;
-    animation-timing-function: ease-in;
-    animation:  flipX 700ms;
-    -webkit-animation: flipX 700ms;
+    
 
 }
 
@@ -145,8 +144,10 @@ h1 {
     100% {
         transform: rotateY(360deg);
     }
+}
 
 
 
+    
 
 
