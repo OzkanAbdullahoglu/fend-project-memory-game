@@ -79,7 +79,7 @@ function begin() {
         clickedCard[i].addEventListener('mouseover', function(e) {
             clickedCard[i].style.cssText = 'background: #e1cce1'
         });
-        clickedCard[i].addEventListener('mouseleave', function(e) {
+        clickedCard[i].addEventListener('mouseout', function(e) {
             clickedCard[i].style.cssText = 'background: #2e3d49'
         });
         clickedCard[i].addEventListener('click', function(e) {
@@ -100,7 +100,7 @@ function begin() {
                 }
             }
             if (listArray.length === 6) {
-                setTimeout(function() { $('#modalCenter').modal('show');}, 1000);
+                setTimeout(function() { $('#modalCenter').modal('show'); }, 1000);
                 let modalSelector = document.querySelector('.modal-body');
                 let outputOne = document.createElement('p');
                 let outputTwo = document.createElement('p');
@@ -172,10 +172,10 @@ function resetTime() {
 function timer() {
 
     timerr = setInterval(function() {
-        if(hour>0){
-             timeCounter.innerHTML = 'Timer: '+hour + ' hrs ' + minute + ' mins ' + second + ' secs';
-         } else {
-        timeCounter.innerHTML = 'Timer: '+ minute + ' min(s) ' + second + ' secs';
+        if (hour > 0) {
+            timeCounter.innerHTML = 'Timer: ' + hour + ' hrs ' + minute + ' mins ' + second + ' secs';
+        } else {
+            timeCounter.innerHTML = 'Timer: ' + minute + ' min(s) ' + second + ' secs';
         }
         second++;
         if (second == 60) {
