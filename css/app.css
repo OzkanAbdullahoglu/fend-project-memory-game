@@ -28,10 +28,7 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-}
+
 
 /*
  * Styles for the deck of cards
@@ -128,6 +125,24 @@ h1 {
 .fa-star, .fa-star-o, .fa-star-half-o {
     color: #00abff;
 }
+@-webkit-keyframes flipY {
+    0% {
+        -webkit-transform: rotateY(0deg);
+    }
+    25% {
+        -webkit-transform: rotateY(90deg);
+    }
+    50% {
+        -webkit-transform: rotateY(180deg);
+    }
+    75% {
+        -webkit-transform: rotateY(270deg);
+    }
+    
+    100% {
+        -webkit-transform: rotateY(360deg);
+    }
+}
 
 @keyframes flipY {
     0% {
@@ -163,11 +178,8 @@ h1 {
         font-size: 1.5em;
     }
         
-    .container {
-        padding: 0;
-        width : 100%;
-    }
-   
+    
+       
 }  
 
 
