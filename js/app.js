@@ -3,6 +3,7 @@ window.onload = function() {
     cardShuffle();
     begin();
 }
+
 let cards = [];
 let count = 0;
 let starElement = document.querySelectorAll('.fa-star');
@@ -11,13 +12,17 @@ let listArray = [];
 let deck = document.querySelector('.deck');
 let deckCards = deck.children;
 let bagdeCount = 0;
-
-
 let timeCounter = document.querySelector('.timer');
 let second = 0;
 let minute = 0;
 let hour = 0;
-let timerr;
+let timeHolder;
+let clickedCard = document.querySelectorAll('.card');
+const restart = document.querySelector('.restart');
+const replay = document.querySelector('.btn-primary');
+
+restart.addEventListener('click', reset);
+replay.addEventListener('click', reset);
 
 function cardShuffle() {
     for (i = 0; i < deckCards.length; i++) {
@@ -53,31 +58,29 @@ function clickCounter() {
 }
 
 function badge() {
-    if (count > 4 && count <= 6) {
+    if (count > 16 && count <= 20) {
         starElement[2].className = 'fa fa-star-half-o';
-    } else if (count > 6 && count <= 8) {
+    } else if (count > 21 && count <= 30) {
         starElement[2].className = 'fa fa-star-o';
         bagdeCount = 2;
-    } else if (count > 8 && count <= 10) {
+    } else if (count > 31 && count <= 48) {
         starElement[1].className = 'fa fa-star-half-o';
-    } else if (count > 10 && count <= 12) {
+    } else if (count > 49 && count <= 60) {
         starElement[1].className = 'fa fa-star-o';
         bagdeCount = 1;
-    } else if (count > 12 && count <= 14) {
+    } else if (count > 60 && count <= 70) {
         starElement[0].className = 'fa fa-star-half-o';
-    } else if (count > 14 && count <= 16) {
+    } else if (count > 70) {
         starElement[0].className = 'fa fa-star-o';
         bagdeCount = 0;
     }
 
 }
-let clickedCard = document.querySelectorAll('.card');
 
 function begin() {
 
     for (let i = 0; i < clickedCard.length; i++) {
-        
-        clickedCard[i].addEventListener('click', function(e) {
+            clickedCard[i].addEventListener('click', function(e) {
             collectMatchedCards(clickedCard[i]);
             displayCard(clickedCard[i]);
             clickCounter();
@@ -94,7 +97,7 @@ function begin() {
                     setTimeout(function() { hide(listArray[(listArray.length - 1)]); }, 1000);
                 }
             }
-            if (listArray.length === 6) {
+            if (listArray.length === 16) {
                 setTimeout(function() { $('#modalCenter').modal('show'); }, 1000);
                 let modalSelector = document.querySelector('.modal-body');
                 let outputOne = document.createElement('p');
@@ -166,7 +169,7 @@ function resetTime() {
 
 function timer() {
 
-    timerr = setInterval(function() {
+    timeHolder = setInterval(function() {
         if (hour > 0) {
             timeCounter.innerHTML = 'Timer: ' + hour + ' hrs ' + minute + ' mins ' + second + ' secs';
         } else {
@@ -184,11 +187,6 @@ function timer() {
         };
     }, 1000);
 };
-
-const restart = document.querySelector('.restart');
-const replay = document.querySelector('.btn-primary');
-restart.addEventListener('click', reset);
-replay.addEventListener('click', reset);
 
 function reset() {
     location.reload();
