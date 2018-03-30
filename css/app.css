@@ -17,9 +17,8 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png');
-    /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    background: #ffffff url(../img/geometry2.png); /* Background pattern from Subtle Patterns */
+    font-family: "Coda", cursive;
 }
 
 .container {
@@ -28,9 +27,6 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
-
-
 
 /*
  * Styles for the deck of cards
@@ -60,7 +56,6 @@ body {
     border-radius: 8px;
     cursor: pointer;
     display: flex;
-
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
@@ -76,14 +71,6 @@ body {
     pointer-events: none;
 }
 
-
-/*.deck .card.show {
-    font-size: 33px;
-    animation: spin 1s;
-    pointer-events: none;
-
-}*/
-
 .deck .card.match {
     cursor: default;
     background: #02ccba !important;
@@ -94,7 +81,6 @@ body {
 .deck .card.disabled {
     pointer-events: none;
 }
-
 
 /*
  * Styles for the Score Panel
@@ -128,6 +114,8 @@ body {
 .fa-star-half-o {
     color: #00abff;
 }
+
+/*Keyframes for animation*/
 
 @-webkit-keyframes flipY {
     0% {
@@ -165,6 +153,8 @@ body {
         transform: rotateY(360deg);
     }
 }
+
+/*Media queries*/
 
 @media screen and (max-width: 601px) {
 
