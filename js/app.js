@@ -1,8 +1,14 @@
+/**
+* @description Choosing functions which has to be called first .
+*/
 window.onload = function() {
     timer();
     cardShuffle();
     begin();
 }
+/**
+variables
+*/
 let cards = [];
 let count = 0;
 let starElement = document.querySelectorAll('.fa-star');
@@ -19,6 +25,10 @@ let minute = 0;
 let hour = 0;
 let timerr;
 
+/**
+* @description Shuffling cards and creating an array which holds the cards
+* @param {array} cards
+*/
 function cardShuffle() {
     for (i = 0; i < deckCards.length; i++) {
         let pushCards = deckCards[i].children[0].className;
@@ -29,7 +39,10 @@ function cardShuffle() {
         deckCards[i].children[0].className = shuffled[i];
     }
 }
-
+/**
+* @description Shuffling an array 
+* @param {array} array
+*/
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -42,7 +55,9 @@ function shuffle(array) {
     }
     return array;
 }
-
+/**
+* @description Just a click counter which is on the deck??
+*/
 function clickCounter() {
     count += 1;
     if (count > 1) {
@@ -51,7 +66,9 @@ function clickCounter() {
         moves.innerHTML = count + ' Move';
     }
 }
-
+/**
+* @description decreasing star rating up to the clicks
+*/
 function badge() {
     if (count > 4 && count <= 6) {
         starElement[2].className = 'fa fa-star-half-o';
@@ -72,7 +89,16 @@ function badge() {
 
 }
 let clickedCard = document.querySelectorAll('.card');
-
+/**
+* @description Listening click event with a loop in whole cards
+* Displaying clicked cards by calling the function displayCard
+* Count the clicks by calling the function clickCounter
+* Decreasing star rating by calling the function badge
+* Comparing two displayed cards, If they match freeze them as displayed by calling the function locked
+* If they do not match close the cards by calling the function hide
+* Checking If the game is completed and calling the modal to slide down the page
+* Implementing the game results into the modal 
+*/
 function begin() {
 
     for (let i = 0; i < clickedCard.length; i++) {
@@ -112,14 +138,18 @@ function begin() {
         });
     }
 }
-
+/**
+* @description to disable pointer events
+*/
 function disabled() {
     let freeze = document.querySelectorAll('[class= card]');
     for (i = 0; i < freeze.length; i++) {
         freeze[i].className = 'card disabled';
     }
 }
-
+/**
+* @description to enable pointer events
+*/
 function enabled() {
     let reactive = document.querySelectorAll('[class=' + CSS.escape('card disabled') + ']');
     console.log(reactive);
@@ -127,7 +157,10 @@ function enabled() {
         reactive[i].className = 'card';
     }
 }
-
+/**
+* @description open the cards which is clicked
+* @param {string[]} open
+*/
 function displayCard(open) {
     open.className = 'card open show ';
 }
@@ -138,7 +171,9 @@ function collectMatchedCards(list) {
     console.log(cardName);
     listArray.push(cardName);
 }
-
+/**
+* @description to freeze the cards which are matched
+*/
 function locked(equal) {
 
     let matchedCards = document.querySelectorAll('[class=' + CSS.escape(equal) + ']');
@@ -146,7 +181,10 @@ function locked(equal) {
         matchedCards[i].parentElement.className = 'card match';
     }
 }
-
+/**
+* @description close the cards which are not matched
+* To enable pointer events in whole closed cards
+*/
 function hide(notEqual) {
     let unMatchedCards = document.querySelectorAll('[class=' + CSS.escape(notEqual) + ']')
     for (let i = 0; i < unMatchedCards.length; i++) {
@@ -156,14 +194,18 @@ function hide(notEqual) {
     enabled();
 
 }
-
+/**
+* @description to reset timer
+*/
 function resetTime() {
     second = 0;
     minute = 0;
     hour = 0;
     clearInterval(timerr);
 }
-
+/**
+* @description setting up a timer
+*/
 function timer() {
 
     timerr = setInterval(function() {
@@ -189,7 +231,9 @@ const restart = document.querySelector('.restart');
 const replay = document.querySelector('.btn-primary');
 restart.addEventListener('click', reset);
 replay.addEventListener('click', reset);
-
+/**
+* @description reloading the page to restart the application
+*/
 function reset() {
     location.reload();
 }
