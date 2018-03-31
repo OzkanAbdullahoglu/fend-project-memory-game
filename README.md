@@ -50,5 +50,5 @@ In this project;
 This is a classic memory challenge game , you need to match all cards in the deck. Player rating will be decreasing 3 to 1 star up to the move counts. At the end of the game a popup will appear which inform the player about his/her stats.
 
 ## Authors
-Richard Kalehoff 
-Ozkan Abdullahoglu
+* Richard Kalehoff 
+* Ozkan Abdullahoglu
