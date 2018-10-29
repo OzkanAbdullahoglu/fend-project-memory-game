@@ -10,7 +10,7 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. This is an Udacity Project for Udacity students. As requested in this project all functionality had been done in `js/app/js` . All functions had been tested and working properly.
+The starter project has some HTML and CSS styling to display a static version of the Memory Game project. This is an Udacity Project for Udacity students. As requested in this project all functionality had been done in `js/app/js` . All functions had been tested and working properly. 
 
 ## Project Rubric Criterias
 #### Memory Game Logic
@@ -44,7 +44,7 @@ In this project;
 * [Bootstrap modal plugin](https://getbootstrap.com/docs/4.0/components/modal/) had been used for creating a slide down modal at the end of the game.
 
 ## Game Play
-This is a classic memory challenge game , you need to match all cards in the deck. Player rating will be decreasing 3 to 1 star up to the move counts. At the end of the game a popup will appear which inform the player about his/her stats.
+This is a classic memory challenge game , you need to match all cards in the deck. Player rating will be decreasing 3 to 1 star up to the move counts. At the end of the game a popup will appear which inform the player about his/her stats. Game is avaliable in this [link](https://ozkanabdullahoglu.github.io/fend-project-memory-game/)
 
 ## Authors
 * Richard Kalehoff
